@@ -67,21 +67,23 @@ class Game:
         self.fps_pos = width-100
         self.lCicle = int(self.size/2.5)
         #(255, 233, 38),
-        self.colors = [(255, 0, 0),
+        self.colors = [
+                       (0, 0, 0),
+                       (196, 0, 100),
+                       (10, 50, 10),
+                       (255, 0, 0),
                        (255, 165, 0),
                        (255, 128, 128),
-                       (0, 255, 0),
-                       (0, 255, 255),
                        (0, 0, 255),
                        (255, 0, 255),
                        (163, 54, 81),
                        (77, 190, 111),
                        (182, 33, 196),
-                       (87, 177, 255),
                        (145, 196, 5),
                        (159, 12, 196),
                        (14, 48, 240),
-                       (22, 150, 11)]
+                       (22, 150, 11)
+                       ]
         self.clrPointer = 0
 
         #self.hidePos = -self.closeZone
@@ -215,8 +217,17 @@ class Game:
                 if dif <= self.hidePos:
                     self.skip += 1
                     continue
-                pd.circle(self.surface, (self.colors[i] if dif > 0 else (-int(self.prerar*dif), 255 + int(self.prerar*dif), 10)), self.halfINT, max(
-                    round((self.showTime - dif) * self.speed), 1), 1)
+
+                # circle drawing
+                cir_color = (self.colors[i] if dif > 0 else (-int(self.prerar*dif), 255 + int(self.prerar*dif), 10))
+                cir_radius = max(round((self.showTime - dif) * self.speed), 1)
+
+                # the circle itself
+                pd.circle(self.surface, cir_color, self.halfINT, cir_radius, 4)
+                # # black border
+                # pd.circle(self.surface, (0,0,0),  (self.halfINT[0], self.halfINT[1] - 1), cir_radius, 1)
+                # pd.circle(self.surface, (0,0,0),  (self.halfINT[0], self.halfINT[1] + 2), cir_radius, 1)
+
             # self.showTime - dif: 5000 -5000, 5000 -4999, ..., 5000-0 ||| coof -- speed=  distantion/showTime = 360/5000 |||  dist = showTime*coof
 
                 if self.lCicle >= dif*self.speed and dif*self.speed >= -self.lCicle:
