@@ -5,7 +5,9 @@ Operated with the arrow keys. Press the spacebar the moment you destroy the firs
 ## English:
 
 ### How to run
-Just run dod3.exe (for windows)
+For windows
+1. Download the program from the release page: https://github.com/UnknownAr/Drakengard3-helper/releases
+2. Run dod3.exe 
 
 OR (for any system)
 1. Install python3 and add it to PATH system variable
@@ -57,10 +59,11 @@ See example config for more details
 Управление на стрелочках. Нажмите пробел в тот момент, когда уничтожаете первую ноту.
 
 ### Запуск.
+Для Windows
+1. Скачайте программу: https://github.com/UnknownAr/Drakengard3-helper/releases
+2. Запустите dod3.exe
 
-Просто запустите dod3.exe (для windows)
-
-ИЛИ
+ИЛИ (универсальный способ для любой системы)
 1. Установить python3 и pip3 с включением их в переменную среды path
 2. Запустить "python3 -m pip install pygame" для установки зависимостей (для windows вместо "python3" надо писать "py")
 2.1 (Опционально) Настроить программу в файле main\config.ini
