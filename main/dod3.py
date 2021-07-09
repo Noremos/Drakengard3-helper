@@ -14,7 +14,7 @@ class Game:
                  width,
                  height,
                  timings,
-                 time_to_show, startCile, startPlayer, timeStart=0):
+                 time_to_show, startCirclePos, startPlayer, timeStart=0):
         # self.background_image = pygame.image.load(back_image_filename)
         #self.frame_rate = frame_rate
         self.game_over = False
@@ -44,11 +44,11 @@ class Game:
         self.ct = datetime.datetime.now  # ().time
         self.skip = 0
         self.timings = timings
-        self.half = startCile
-        self.halfINT = (int(startCile[0]), int(startCile[1]))
+        self.half = startCirclePos
+        self.halfINT = (int(startCirclePos[0]), int(startCirclePos[1]))
         self.isStart = False
 
-        temp = (startPlayer[0] - startCile[0], startPlayer[1] - startCile[1])
+        temp = (startPlayer[0] - startCirclePos[0], startPlayer[1] - startCirclePos[1])
         self.startPlayer = startPlayer
         self.distantion = math.sqrt(temp[0]*temp[0] + temp[1]*temp[1])  # S1
 
@@ -65,7 +65,7 @@ class Game:
         self.closeZone = int(self.safeTime/2)
         self.timeOffset = 0
         self.fps_pos = width-100
-        self.lCicle = int(self.size/2.5)
+        self.lCircle = int(self.size/2.5)
         #(255, 233, 38),
         self.colors = [
                        (0, 0, 0),
@@ -88,7 +88,7 @@ class Game:
 
         #self.hidePos = -self.closeZone
         #self.hidePos = 0
-        self.hidePos = -self.lCicle
+        self.hidePos = -self.lCircle
 
         pass
 
@@ -173,7 +173,7 @@ class Game:
             #         handler(event.type, event.pos)
 
     def update(self):
-        """pause sattus and """
+        """Check for pause """
         # for o in self.objects:
         #     o.update()
         if self.isPause:
@@ -190,18 +190,18 @@ class Game:
                   (self.startPlayer), int(self.size), 1)
 
         pd.circle(self.surface, (0, 128, 0),
-                  (self.startPlayer), self.lCicle, 1)
+                  (self.startPlayer), self.lCircle, 1)
 
         # ltc
         pd.line(self.surface, (0, 0, 0),
-                (self.startPlayer[0]-self.size + 1, self.startPlayer[1]), (self.startPlayer[0]-self.lCicle, self.startPlayer[1]), 2)
+                (self.startPlayer[0]-self.size + 1, self.startPlayer[1]), (self.startPlayer[0]-self.lCircle, self.startPlayer[1]), 2)
         # ctr
         pd.line(self.surface, (0, 0, 0),
-                (self.startPlayer[0]+self.lCicle, self.startPlayer[1]), (self.startPlayer[0]+self.size, self.startPlayer[1]), 2)
+                (self.startPlayer[0]+self.lCircle, self.startPlayer[1]), (self.startPlayer[0]+self.size, self.startPlayer[1]), 2)
 
         # dtc
         pd.line(self.surface, (0, 0, 0),
-                (self.startPlayer[0], self.startPlayer[1]+self.size), (self.startPlayer[0], self.startPlayer[1]+self.lCicle), 2)
+                (self.startPlayer[0], self.startPlayer[1]+self.size), (self.startPlayer[0], self.startPlayer[1]+self.lCircle), 2)
 
         if not self.isStart:
             return
@@ -228,9 +228,9 @@ class Game:
                 # pd.circle(self.surface, (0,0,0),  (self.halfINT[0], self.halfINT[1] - 1), cir_radius, 1)
                 # pd.circle(self.surface, (0,0,0),  (self.halfINT[0], self.halfINT[1] + 2), cir_radius, 1)
 
-            # self.showTime - dif: 5000 -5000, 5000 -4999, ..., 5000-0 ||| coof -- speed=  distantion/showTime = 360/5000 |||  dist = showTime*coof
+            # self.showTime - dif: 5000 -5000, 5000 -4999, ..., 5000-0 ||| coef -- speed=  distantion/showTime = 360/5000 |||  dist = showTime*coef
 
-                if self.lCicle >= dif*self.speed and dif*self.speed >= -self.lCicle:
+                if self.lCircle >= dif*self.speed and dif*self.speed >= -self.lCircle:
                     textsurface = self.myfont.render(
                         "Press!!!", False, (0, 0, 0))
                     self.surface.blit(
@@ -250,7 +250,7 @@ class Game:
 
         # last_delta = self.ct()
         # last_fps = "0"
-        # couner = 6
+        # counter = 6
 
         while not self.game_over:
             # self.surface.blit(self.background_image, (0, 0))
@@ -260,12 +260,12 @@ class Game:
 
             #################FPS########################
             #ct = self.ct()
-            # if couner == 6:
+            # if counter == 6:
             #     last_fps = str(int(1000.0/(ct-last_delta).total_seconds()))
-            #     couner = 0
+            #     counter = 0
             # textsurface = self.myfont.render(last_fps, False, (0, 0, 0))
             # self.surface.blit(textsurface, (self.fps_pos, 0))
-            #couner += 1
+            #counter += 1
             #last_delta = ct
             # or
             # self.clock.tick(self.frame_rate)
