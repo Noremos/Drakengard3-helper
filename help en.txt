@@ -1,34 +1,32 @@
 1. Install python3 and add it to PATH system variable
-2. Run download.bat to install packages 
+2. Run download.bat to install packages
 (optional)Edit the main\config.ini
 3. Run dod.py in "main" folder. Use 'python.exe dod.py' or '[path to python]\python.exe dod.py' (without ') to do it.   
 
-Arrow control. Press the spacebar when you destroy the first note.
+Controls on the arrows. Press the spacebar the moment you destroy the first note.
 
-#############Note time movements:
-left-increase the time of the last destroyed note by 50ms
-rigth-reduce the time of the last destroyed note by 50ms
+###############Control the timing of the notes:
+left - increase time of the last destroyed note by 50ms.
+Right - decrement the time of the last destroyed note by 50ms.
 
-ctrl+left-  increase the time of the first approaching note by 50 ms
-ctrl+rigth- reduce the time of the first approaching note by 50 ms
+ctrl+left- increase time of the first approaching note by 50ms.
+ctrl+right - decrease the time of the first approaching note by 50ms.
 
-shift+left-(increase the time for all notes by 50ms)
-shift+rigth-(reduce the time for all notes by 50ms)
+shift+left - increase the time of all notes by 50ms
+shift+right - decrease the time of all notes by 50ms
 
-#############Game time movements:
-up(hold) - slow down time
-down(hold)- speed up time
+##############Control the playing time:
+up(press) - slow down time
+down(press) - speed up time
 
-ctrl+up - rewind time by 50 ms
-ctrl+down- increase time by 50 ms
-
-space - Start the game. Then pause/unpause
-r - restart
-
+ctrl+up- rewind time on 50 ms
+ctrl+down- increase time on 50 ms
+space - start the game. Then pause / unpause
+r - start over
 
 
-utils\timeing.py
-This program needs to write timings from a video to the text file.
-It records when the pixel is greater than the threshold, then locks - cannot recod any more.
-Unlocks when the pixel is less than the second threshold - can record.
-See example config for more details
+
+
+utils\timing.py
+This program is used to read the timings from a video and write them to the file. 
+It works on the principle of reading a pixel (one channel to be exact). When it exceeds a certain range - the time is written and blocked until the value is less than the lower threshold.

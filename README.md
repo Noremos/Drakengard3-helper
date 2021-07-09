@@ -1,48 +1,50 @@
 # Drakengard3-helper
 This program can help you defeat the final boss in Drakengard 3
-Arrow control. Press the spacebar when you destroy the first note.
+Operated with the arrow keys. Press the spacebar the moment you destroy the first note.
 
 ## English:
 
 ### How to run
-Just run release/dod3.exe 
+Just run dod3.exe (for windows)
 
-OR
+OR (for any system)
 1. Install python3 and add it to PATH system variable
-2. Run download.bat to install packages.
-(optional)Edit the main\config.ini
-3. Run dod.py in "main" folder. Use 'python.exe dod.py' or '[path to python]\python.exe dod.py' (without ') to do it.
+2. Run "python3 -m pip install pygame" to download the dependents (for windows you should write "py" instead of "python3")
+2.1 (optional) Configure the program in the main\config.ini file
+3. Run the file dod.py in the main directory with python3 dod.py or [python path]\python dod.py (replace python with python3.exe for windows os)
 
 
-### Note time movements:
+### Note time management:
 
-left-increase the time of the last destroyed note by 50ms
+left - increase time of the last destroyed note by 50ms.
 
-right - reduce the time of the last destroyed note by 50ms
+right - decrement the time of the last destroyed note by 50ms.
 
-ctrl+left-  increase the time of the first approaching note by 50 ms
+ctrl+left- increase time of the first approaching note by 50ms.
 
-ctrl+right - reduce the time of the first approaching note by 50 ms
+ctrl+right - decrease the time of the first approaching note by 50ms.
 
-shift+left-increase the time for all notes by 50ms
+shift+left - increase the time of all notes by 50ms
 
-shift+right - reduce the time for all notes by 50ms
+shift+right - decrease the time of all notes by 50ms
 
-### Game time movements:
+#### Control the playing time:
 
 up(hold) - slow down time
 
-down(hold)- speed up time
+down(hold) - speed up time
 
-ctrl+up - rewind time by 50 ms
+ctrl+up- rewind time on 50 ms
 
-ctrl+down- increase time by 50 ms
+ctrl+down- increase time on 50 ms
 
-space - Start the game. Then pause/unpause
+space - start the game. Then pause / unpause
+
+r - start over
 
 r - restart
 
-utils\timeing.py
+utils\timing.py
 
 This program needs to write timings from a video to the text file.
 It records when the pixel is greater than the threshold, then locks - cannot record any more.
@@ -56,13 +58,13 @@ See example config for more details
 
 ### Запуск.
 
-Просто запустите release/dod3.exe
+Просто запустите dod3.exe (для windows)
 
 ИЛИ
-1. Установить python3 и pip3 с включением его в переменную среды path
-2. Запустить download.bat для установки доп. пакетов
-(Опционально)Настроить программу в файле main\config.ini
-3. Запустить файл dod.py в каталоге main с помощью команды python.exe dod.py или [путь к python]\python.exe dod.py  
+1. Установить python3 и pip3 с включением их в переменную среды path
+2. Запустить "python3 -m pip install pygame" для установки зависимостей (для windows вместо "python3" надо писать "py")
+2.1 (Опционально) Настроить программу в файле main\config.ini
+3. Запустить файл dod.py в каталоге main с помощью команды python3 dod.py или [путь к python]\python3 dod.py (для windows вместо python3 надо писать python3.exe)
 
 
 ### Управление временем нот:
@@ -93,7 +95,7 @@ space - начать игру. Затем пауза/снятие с паузы
 
 r - начать заново
 
-utils\timeing.py
+utils\timing.py
 
-Данная программа нужна, чтобы считать тайминги с видео и записать их в файл. 
+Данная программа нужна, чтобы считать тайминги с видео и записать их в файл.
 Работает по принципу считывания пикселя. Когда он превышает определенный диапазон - записывается время
