@@ -369,5 +369,5 @@ if __name__ == "__main__":
 
     #game = Game(800, 700, 2000, (400, 100), (400, 600), time.total_seconds()*1000.0)
 
-    game.run() 
+    game.run()
     #input("Press enter to continue...")
