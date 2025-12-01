@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['dod3.py'],
-             pathex=['D:\\Programs\\Python\\Drakengard3-helper\\main'],
+             pathex=[],
              binaries=[],
              datas=[],
              hiddenimports=[],
