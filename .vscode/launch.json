@@ -6,11 +6,11 @@
     "configurations": [
         {
             "name": "dod3",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main/dod3.py",
             "console": "integratedTerminal",
-            "cwd":"${workspaceFolder}/main"
+            "cwd":"${workspaceFolder}"
         }
     ]
 }
