@@ -1,6 +1,6 @@
 import pygame
 from pygame import display, draw as pd, key
-import sys
+
 import datetime
 from collections import defaultdict
 import math
@@ -11,6 +11,7 @@ import os
 
 class Game:
     def __init__(self,
+                 rootPath,
                  width,
                  height,
                  timings,
@@ -29,9 +30,7 @@ class Game:
         display.set_caption("Destroy the flower!")
 
         ##########ICON##########
-        ico = "flower.png"
-        if not os.path.exists(ico):
-            ico = "main/flower.png"
+        ico = os.path.join(rootPath, "flower.png")
         gameIcon = pygame.image.load(ico)
         display.set_icon(gameIcon)
         ##############
@@ -360,11 +359,10 @@ if __name__ == "__main__":
     st = split(cof.get("Settings", "startTime"))
 
     ##############################
-    print("1/3...")
 
     time = datetime.timedelta(minutes=st[0], seconds=st[1], milliseconds=st[2])
 
-    game = Game(wid, hei, timings, nst, (nsp[0], nsp[1]),
+    game = Game(rootPath, wid, hei, timings, nst, (nsp[0], nsp[1]),
                 (psp[0], psp[1]), time.total_seconds()*1000.0)
 
     #game = Game(800, 700, 2000, (400, 100), (400, 600), time.total_seconds()*1000.0)
