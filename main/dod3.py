@@ -7,11 +7,18 @@ import math
 from shutil import copyfile
 import configparser
 import os
+import sys
 
+def getResourcePath(filename):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, filename)
+
+    rootPath = os.path.dirname(__file__)
+    return os.path.join(rootPath, filename)
 
 class Game:
     def __init__(self,
-                 rootPath,
                  width,
                  height,
                  timings,
@@ -30,7 +37,7 @@ class Game:
         display.set_caption("Destroy the flower!")
 
         ##########ICON##########
-        ico = os.path.join(rootPath, "flower.png")
+        ico = getResourcePath("flower.png")
         gameIcon = pygame.image.load(ico)
         display.set_icon(gameIcon)
         ##############
@@ -332,10 +339,8 @@ time_path = "timings/timings"
 
 if __name__ == "__main__":
     ################ ROOT FIX ################
-    rootPath = os.path.dirname(__file__)
-
-    config_path = os.path.join(rootPath, config_path)
-    time_path = os.path.join(rootPath, time_path)
+    config_path = getResourcePath(config_path)
+    time_path = getResourcePath(time_path)
 
     ################ TIMINGS ################
     read_timings()
@@ -362,7 +367,7 @@ if __name__ == "__main__":
 
     time = datetime.timedelta(minutes=st[0], seconds=st[1], milliseconds=st[2])
 
-    game = Game(rootPath, wid, hei, timings, nst, (nsp[0], nsp[1]),
+    game = Game(wid, hei, timings, nst, (nsp[0], nsp[1]),
                 (psp[0], psp[1]), time.total_seconds()*1000.0)
 
     #game = Game(800, 700, 2000, (400, 100), (400, 600), time.total_seconds()*1000.0)
