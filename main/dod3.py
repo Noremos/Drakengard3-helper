@@ -297,10 +297,10 @@ timings = []
 
 
 def write_timings(_times, offset):
-    global timePath
+    global time_path
 
-    copyfile(timePath, timePath + '.bak')
-    with open(timePath, 'w') as file:  # Use file to refer to the file object
+    copyfile(time_path, time_path + '.bak')
+    with open(time_path, 'w') as file:  # Use file to refer to the file object
         for time in _times:
             file.write(str(time+offset))
             file.write("\n")
@@ -309,10 +309,10 @@ def write_timings(_times, offset):
 
 
 def read_timings():
-    global timePath
+    global time_path
     global timings
 
-    with open(timePath, 'r') as file:  # Use file to refer to the file object
+    with open(time_path, 'r') as file:  # Use file to refer to the file object
         for line in file:
             timings.append(float(line.replace('\n', '').replace(',', '.')))
     pass
@@ -327,22 +327,25 @@ def split(st) -> list:
     return res
 
 
-path = "main/config.ini"
-timePath = "timings/timings"
+config_path = "config.ini"
+time_path = "timings/timings"
 
 
 if __name__ == "__main__":
+    ################ ROOT FIX ################
+    rootPath = os.path.dirname(__file__)
+
+    config_path = os.path.join(rootPath, config_path)
+    time_path = os.path.join(rootPath, time_path)
+
+    ################ TIMINGS ################
     read_timings()
     print("starting...")
-    ################CONFIG########
-    if not os.path.exists(path):
-        path = "config.ini"
 
-    if not os.path.exists(timePath):
-        timePath = "main/timings/timings"
+    ################ CONFIG ################
 
     cof = configparser.ConfigParser()
-    cof.read(path)
+    cof.read(config_path)
 
     wid = cof.getint("Settings", "width")
 
