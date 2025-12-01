@@ -11,10 +11,12 @@ import sys
 
 def getResourcePath(filename):
     """ Get absolute path to resource, works for dev and for PyInstaller """
-    if hasattr(sys, '_MEIPASS'):
-        return os.path.join(sys._MEIPASS, filename)
+    if getattr(sys, 'frozen', False):
+        application_path = os.path.dirname(sys.executable)
+    elif __file__:
+        application_path = os.path.dirname(__file__)
 
-    rootPath = os.path.dirname(__file__)
+    rootPath = os.path.dirname(application_path)
     return os.path.join(rootPath, filename)
 
 class Game:
