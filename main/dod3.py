@@ -243,7 +243,7 @@ class Game:
         # tempTime = timedelta(seconds = tempTime.total_seconds())f'{tempTime.hour}:{tempTime.minute}:{tempTime.second}:{tempTime.microsecond}
         self.surface.blit(textsurface, (0, 30))
 
-        textsurface = self.myfont.render(str(self.tempTime), False, (0, 0, 0))
+        textsurface = self.myfont.render(str(self.tempTime)[:-4], False, (0, 0, 0))
         self.surface.blit(textsurface, (0, 0))
 
     def run(self):
